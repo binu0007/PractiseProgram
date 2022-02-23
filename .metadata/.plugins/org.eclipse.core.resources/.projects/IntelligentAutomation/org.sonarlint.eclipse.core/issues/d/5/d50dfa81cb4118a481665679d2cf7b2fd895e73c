@@ -1,0 +1,47 @@
+
+g	java:S125"<This block of commented-out lines of code should be removed.(«³ŒÉHÂLRMAJORZ
+CODE_SMELL
+€
+java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(»ÈúMHÒLRCRITICALZ
+CODE_SMELL
+r
+java:S3457r"AFormat specifiers should be used instead of string concatenation.(‡ÈÔ€úÿÿÿÿHàLRMAJORZ
+CODE_SMELL
+x
+java:S5361¤"HReplace this call to "replaceAll()" by a call to the "replace()" method.(¥íúËHáLRCRITICALZ
+CODE_SMELL
+m	java:S125»"<This block of commented-out lines of code should be removed.(î÷àüùÿÿÿÿHâLRMAJORZ
+CODE_SMELL
+m	java:S125É"<This block of commented-out lines of code should be removed.(¿š™ûÿÿÿÿHãLRMAJORZ
+CODE_SMELL
+s
+java:S3457Õ"AFormat specifiers should be used instead of string concatenation.(Ò±È€ıÿÿÿÿHìLRMAJORZ
+CODE_SMELL
+m
+java:S3457Ø"AFormat specifiers should be used instead of string concatenation.(­¼æ+HíLRMAJORZ
+CODE_SMELL
+s
+java:S3457à"AFormat specifiers should be used instead of string concatenation.(æ‰éªüÿÿÿÿHîLRMAJORZ
+CODE_SMELL
+‰
+java:S2142û"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(Şê·şÿÿÿÿHïLRMAJORZBUG
+m	java:S125í"<This block of commented-out lines of code should be removed.(ºôÈîùÿÿÿÿHñLRMAJORZ
+CODE_SMELL
+…	java:S135ˆ"YReduce the total number of break and continue statements in this loop to use at most one.(÷Ü°¼HõLRMINORZ
+CODE_SMELL
+h
+java:S2629r"7Use the built-in formatting to construct this argument.(‡ÈÔ€úÿÿÿÿHøLRMAJORZ
+CODE_SMELL
+i
+java:S2629Õ"7Use the built-in formatting to construct this argument.(Ò±È€ıÿÿÿÿHùLRMAJORZ
+CODE_SMELL
+c
+java:S2629Ø"7Use the built-in formatting to construct this argument.(­¼æ+HúLRMAJORZ
+CODE_SMELL
+
+java:S2629à"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(æ‰éªüÿÿÿÿHûLRMAJORZ
+CODE_SMELL
+}
+java:S2095¥"PUse try-with-resources or close this "OutputStreamWriter" in a "finally" clause.(äšÿÖùÿÿÿÿHüLRBLOCKERZBUG
+t
+java:S2095¸"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ì·´ÍHıLRBLOCKERZBUG

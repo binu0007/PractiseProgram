@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package StepDefinitions;
+
+import io.cucumber.java.en.When;
+
+/**
+ * @author TG1670
+ *
+ */
+public class StepDefinitions
+{
+	@When("user will launch the browser")
+	public void user_will_launch_the_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("Launched the Application")
+	public void launched_the_application() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user will enter Valid username")
+	public void user_will_enter_valid_username() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user will enter valid password")
+	public void user_will_enter_valid_password() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user click on Login button")
+	public void user_click_on_login_button() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+}

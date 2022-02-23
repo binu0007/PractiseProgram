@@ -1,0 +1,22 @@
+
+
+java:S1989!"PHandle the following exception that could be thrown by "getWriter": IOException.(°ﬁ≤∑HÌMRMINORZVULNERABILITY
+g	java:S125""<This block of commented-out lines of code should be removed.(Òæÿ⁄HÓMRMAJORZ
+CODE_SMELL
+Ü
+java:S3776&"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ˇ‡ˇ˘ˇˇˇˇHÔMRCRITICALZ
+CODE_SMELL
+ï
+java:S1989*"aHandle the following exceptions that could be thrown by "getPart": IOException, ServletException.(∑ö˝ø¯ˇˇˇˇH˙MRMINORZVULNERABILITY
+
+java:S1989M"PHandle the following exception that could be thrown by "getWriter": IOException.(¨›§ßH˚MRMINORZVULNERABILITY
+
+java:S1989Q"PHandle the following exception that could be thrown by "getWriter": IOException.(™êö£H¸MRMINORZVULNERABILITY
+Ç
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ï˙Â≤˛ˇˇˇˇH˝MRMAJORZBUG
+f
+java:S11418"5Extract this nested try block into a separate method.(°ª¢¸˘ˇˇˇˇH˛MRMAJORZ
+CODE_SMELL
+á
+java:S1104"VMake testDriver a static final constant or non-public and provide accessors if needed.(ï˙Â≤˛ˇˇˇˇHÄNRMINORZ
+CODE_SMELL

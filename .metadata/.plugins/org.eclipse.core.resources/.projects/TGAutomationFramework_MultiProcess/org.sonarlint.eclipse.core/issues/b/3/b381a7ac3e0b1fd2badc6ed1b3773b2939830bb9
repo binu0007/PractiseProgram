@@ -1,0 +1,45 @@
+
+Z
+java:S3416".Update this logger to use "DriverClass.class".(Â¥ÌHÚQRMINORZ
+CODE_SMELL
+
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(§Ä¨©HÛQRCRITICALZ
+CODE_SMELL
+}
+java:S1854»"KRemove this useless assignment to local variable "modifiedIndMethodStatus".(ÓÀæ¶úÿÿÿÿHìQRMAJORZ
+CODE_SMELL
+w
+java:S1854À"KRemove this useless assignment to local variable "modifiedIndMethodStatus".(Şå¨%HíQRMAJORZ
+CODE_SMELL
+r
+java:S1854Ì"ERemove this useless assignment to local variable "methodCheckStatus".(ïÎòÆHîQRMAJORZ
+CODE_SMELL
+r
+java:S1854ß"ERemove this useless assignment to local variable "methodCheckStatus".(ïÎòÆHïQRMAJORZ
+CODE_SMELL
+Š	java:S135Æ"YReduce the total number of break and continue statements in this loop to use at most one.(ü§è½ùÿÿÿÿHğQRMINORZ
+CODE_SMELL
+
+java:S1104"UMake webDriver a static final constant or non-public and provide accessors if needed.(®‚ƒ¼HóQRMINORZ
+CODE_SMELL
+V
+java:S2629›"$Invoke method(s) only conditionally.(›Ò½İúÿÿÿÿHôQRMAJORZ
+CODE_SMELL
+Q
+java:S2629¬"$Invoke method(s) only conditionally.(àòèàHõQRMAJORZ
+CODE_SMELL
+Q
+java:S2629°"$Invoke method(s) only conditionally.(“§œ‰HöQRMAJORZ
+CODE_SMELL
+V
+java:S2629½"$Invoke method(s) only conditionally.(—Ğˆ’úÿÿÿÿH÷QRMAJORZ
+CODE_SMELL
+V
+java:S2629Â"$Invoke method(s) only conditionally.(—Ğˆ’úÿÿÿÿHøQRMAJORZ
+CODE_SMELL
+Q
+java:S2629Ğ"$Invoke method(s) only conditionally.(“§œ‰HùQRMAJORZ
+CODE_SMELL
+Q
+java:S2629ã"$Invoke method(s) only conditionally.(“§œ‰HúQRMAJORZ
+CODE_SMELL

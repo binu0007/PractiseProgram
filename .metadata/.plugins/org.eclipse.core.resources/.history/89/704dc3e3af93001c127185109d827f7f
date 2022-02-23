@@ -1,0 +1,10 @@
+Feature: Working on TG App Testing working through BDD or Not
+Scenario: Testing Login Feature Of TGApp
+
+When user will launch the browser
+And Launched the Application
+When user will enter Valid username 
+And user will enter valid password
+And user click on Login button
+Then LoginHome Page will Display
+ 

@@ -1,0 +1,89 @@
+
+‡
+java:S3776Ö"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(“½›¿şÿÿÿÿHêURCRITICALZ
+CODE_SMELL
+w
+java:S1128"FRemove this unused import 'org.openqa.selenium.remote.CapabilityType'.(–ŒÉİûÿÿÿÿHûURMINORZ
+CODE_SMELL
+Q
+java:S2629ƒ"$Invoke method(s) only conditionally.(àòèàHıURMAJORZ
+CODE_SMELL
+w
+java:S1854—"KRemove this useless assignment to local variable "modifiedIndMethodStatus".(Şå¨%HşURMAJORZ
+CODE_SMELL
+w
+java:S1128"KRemove this unused import 'org.openqa.selenium.remote.DesiredCapabilities'.(¦ò©ŠHÿURMINORZ
+CODE_SMELL
+b
+java:S1128"1Remove this unused import 'java.net.InetAddress'.(ë³ƒÒÿÿÿÿÿHVRMINORZ
+CODE_SMELL
+€
+java:S11041"TMake filename a static final constant or non-public and provide accessors if needed.(ƒ °ŒHƒVRMINORZ
+CODE_SMELL
+€
+java:S1192?"LDefine a constant instead of duplicating this literal "browserName" 4 times.(ìŞÚåÿÿÿÿÿH„VRCRITICALZ
+CODE_SMELL
+„
+java:S11040"XMake baseClassObj a static final constant or non-public and provide accessors if needed.(H‰VRMINORZ
+CODE_SMELL
+o
+java:S1128#">Remove this unused import 'net.lightbody.bmp.BrowserMobProxy'.(¦…ÿÉÿÿÿÿÿHŠVRMINORZ
+CODE_SMELL
+q
+java:S1128%"@Remove this unused import 'net.lightbody.bmp.client.ClientUtil'.(˜–ä÷ıÿÿÿÿHŒVRMINORZ
+CODE_SMELL
+Q
+java:S2629‡"$Invoke method(s) only conditionally.(“§œ‰HVRMAJORZ
+CODE_SMELL
+
+java:S1104/"UMake webDriver a static final constant or non-public and provide accessors if needed.(®‚ƒ¼HVRMINORZ
+CODE_SMELL
+Q
+java:S2629º"$Invoke method(s) only conditionally.(“§œ‰HVRMAJORZ
+CODE_SMELL
+m	java:S125…"<This block of commented-out lines of code should be removed.( É‰ÿıÿÿÿÿH‘VRMAJORZ
+CODE_SMELL
+c
+java:S1128"2Remove this unused import 'java.net.Inet4Address'.(ê…ÉÃúÿÿÿÿH¥VRMINORZ
+CODE_SMELL
+Š	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(ü§è½ùÿÿÿÿH§VRMINORZ
+CODE_SMELL
+}
+java:S1854’"KRemove this useless assignment to local variable "modifiedIndMethodStatus".(ÓÀæ¶úÿÿÿÿHªVRMAJORZ
+CODE_SMELL
+q
+java:S1128&"@Remove this unused import 'net.lightbody.bmp.proxy.CaptureType'.(·½ÅûÿÿÿÿH«VRMINORZ
+CODE_SMELL
+X
+java:S1128",Remove this unused import 'java.net.Socket'.(­‡àúH­VRMINORZ
+CODE_SMELL
+b
+java:S1128"6Remove this unused import 'org.openqa.selenium.Proxy'.(ç–À†H¯VRMINORZ
+CODE_SMELL
+Q
+java:S2629§"$Invoke method(s) only conditionally.(“§œ‰H±VRMAJORZ
+CODE_SMELL
+r
+java:S1854¶"ERemove this useless assignment to local variable "methodCheckStatus".(ïÎòÆH²VRMAJORZ
+CODE_SMELL
+V
+java:S2629ò"$Invoke method(s) only conditionally.(›Ò½İúÿÿÿÿH³VRMAJORZ
+CODE_SMELL
+V
+java:S2629”"$Invoke method(s) only conditionally.(—Ğˆ’úÿÿÿÿH´VRMAJORZ
+CODE_SMELL
+˜
+java:S1130|"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÖÖ€ÉHµVRMINORZ
+CODE_SMELL
+¨
+java:S1130œ"vRemove the declaration of thrown exception 'java.net.UnknownHostException', as it cannot be thrown from method's body.(Òûà™ùÿÿÿÿH·VRMINORZ
+CODE_SMELL
+r
+java:S1854£"ERemove this useless assignment to local variable "methodCheckStatus".(ïÎòÆH¹VRMAJORZ
+CODE_SMELL
+V
+java:S2629™"$Invoke method(s) only conditionally.(—Ğˆ’úÿÿÿÿHºVRMAJORZ
+CODE_SMELL
+u
+java:S1128$"DRemove this unused import 'net.lightbody.bmp.BrowserMobProxyServer'.(­Îå„ÿÿÿÿÿH»VRMINORZ
+CODE_SMELL

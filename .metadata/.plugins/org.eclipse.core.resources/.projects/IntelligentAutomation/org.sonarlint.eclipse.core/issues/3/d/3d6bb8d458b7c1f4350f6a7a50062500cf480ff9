@@ -1,0 +1,51 @@
+
+w	java:S112±"FDefine and throw a dedicated exception instead of using a generic one.(ŒÚ„§ÿÿÿÿÿHÙMRMAJORZ
+CODE_SMELL
+r	java:S112¡"FDefine and throw a dedicated exception instead of using a generic one.(­€Š¶HÚMRMAJORZ
+CODE_SMELL
+Ž	java:S116ë"]Rename this field "ExecStartTimeValue" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í£ÓµüÿÿÿÿHÛMRMINORZ
+CODE_SMELL
+‘	java:S116Ç"`Rename this field "NextTestCaseRunStatus" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½„íùÿÿÿÿHÜMRMINORZ
+CODE_SMELL
+k
+java:S1128":Remove this unused import 'com.truglobal.main.TestDriver'.(¸óè¶ûÿÿÿÿHÝMRMINORZ
+CODE_SMELL
+o
+java:S1128">Remove this unused import 'net.lightbody.bmp.BrowserMobProxy'.(¦…ÿÉÿÿÿÿÿHßMRMINORZ
+CODE_SMELL
+…
+java:S1104"ZMake objRefFilePath a static final constant or non-public and provide accessors if needed.(¹ôªmHáMRMINORZ
+CODE_SMELL
+—
+java:S1104"fMake testCaseMappingRefFilePath a static final constant or non-public and provide accessors if needed.(˜–˜¤ýÿÿÿÿHâMRMINORZ
+CODE_SMELL
+›
+java:S1104"jMake testCaseDataMappingRefFilePath a static final constant or non-public and provide accessors if needed.(ÁñôïþÿÿÿÿHãMRMINORZ
+CODE_SMELL
+—
+java:S1104"fMake genericPropertyRefFilePath a static final constant or non-public and provide accessors if needed.(î·½ÓüÿÿÿÿHäMRMINORZ
+CODE_SMELL
+™
+java:S1104 "hMake parameterFileDataRefFilePath a static final constant or non-public and provide accessors if needed.(ÊÀ‘ìÿÿÿÿÿHåMRMINORZ
+CODE_SMELL
+œ
+java:S1104!"kMake statusUpdateFileDataRefFilePath a static final constant or non-public and provide accessors if needed.(Ö×æ„ûÿÿÿÿHæMRMINORZ
+CODE_SMELL
+_
+java:S1444"4Make this "public static objRefFilePath" field final(¹ôªmHçMRMINORZ
+CODE_SMELL
+q
+java:S1444"@Make this "public static testCaseMappingRefFilePath" field final(˜–˜¤ýÿÿÿÿHèMRMINORZ
+CODE_SMELL
+u
+java:S1444"DMake this "public static testCaseDataMappingRefFilePath" field final(ÁñôïþÿÿÿÿHéMRMINORZ
+CODE_SMELL
+q
+java:S1444"@Make this "public static genericPropertyRefFilePath" field final(î·½ÓüÿÿÿÿHêMRMINORZ
+CODE_SMELL
+s
+java:S1444 "BMake this "public static parameterFileDataRefFilePath" field final(ÊÀ‘ìÿÿÿÿÿHëMRMINORZ
+CODE_SMELL
+v
+java:S1444!"EMake this "public static statusUpdateFileDataRefFilePath" field final(Ö×æ„ûÿÿÿÿHìMRMINORZ
+CODE_SMELL

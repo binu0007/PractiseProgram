@@ -1,0 +1,248 @@
+package com.truglobal.testcases;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.truglobal.bean.BaseClass;
+import com.truglobal.functions.TGCommonProcesses;
+
+/**
+ * @author Kumara Swamy
+ *
+ */
+public class TGWebCases {
+	private static final Logger logger = LogManager.getLogger(TGCommonProcesses.class);
+	public BaseClass baseClassObj;
+
+	public TGWebCases(BaseClass baseClassObj) {
+		this.baseClassObj = baseClassObj;
+	}
+
+	// This test is used to navigate to Home tab and verify the pages
+	public void VerifyHomePage(String testDataKey) {
+		logger.info("VerifyHomePage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().clickOnHomeTab();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			Thread.sleep(2000);
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error("Exception while executing VerifyHomePage - " + excp);
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	// This test is used to navigate to Company Tab and verify the pages
+	public void VerifyCompanyPage(String testDataKey) {
+		logger.info("VerifyCompanyPage - Test Case execution starts here");
+
+		try {
+			String localDataRef = baseClassObj.getComFuncs()
+					.getValuesFromDictionary(baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey);
+			logger.info("Company Name" + localDataRef);
+
+			baseClassObj.getTgComProcess().navigateToCompanyHeader();
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error("Exception while executing VerifyCompanyPage - " + excp);
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	// This test is used to navigate to Services tab and verify the pages
+	public void VerifyServicesPage(String testDataKey) {
+		logger.info("VerifyServicesPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyServicesPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyRoboticProcessAutomationPage(String testDataKey) {
+		logger.info("VerifyServicesPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickRobotic();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyServicesPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyArtificialIntelligencePage(String testDataKey) {
+		logger.info("VerifyServicesPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickArtificialIntelligence();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyServicesPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyMachineLearningPage(String testDataKey) {
+		logger.info("VerifyMachineLearningPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickMachineLearning();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyMachineLearningPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyInternetofThingsPage(String testDataKey) {
+		logger.info("VerifyInternetofThingsPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickInternetofThings();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyInternetofThingsPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyMobilityPage(String testDataKey) {
+		logger.info("VerifyMobilityPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickMobility();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyMobilityPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyChatbotPage(String testDataKey) {
+		logger.info("VerifyChatbotPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickChatbot();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyChatbotPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyDigitalExperiencePage(String testDataKey) {
+		logger.info("VerifyDigitalExperiencePage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickDigitalExperience();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyDigitalExperiencePage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void VerifyDigitalSecurityPage(String testDataKey) {
+		logger.info("VerifyDigitalSecurityPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getTgComProcess().navigateToServicesTabAndClickDigitalSecurity();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyDigitalSecurityPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+	
+	public void EmployeeSpeak(String testDataKey) throws Exception {
+		logger.info("Start of Executing EmployeeSpeak method");
+		baseClassObj.getTgComProcess().clickEmployeeSpeak();
+	}
+//---------------------------------------TG Apps Test cases---------------------------------------------------------------------	
+	public void VerifyTGAppsUserNamePage(String testDataKey) throws Exception {
+		logger.info("Start of Executing user name data method");
+		baseClassObj.getWebActions().clickElementUsingObjectXPath("//input[@id='id_sc_field_login']");
+		baseClassObj.getTgComProcess().UserName(testDataKey);
+		
+	}
+	
+	public void VerifyTGAppsUserPasswordPage(String testDataKey) throws Exception {
+		logger.info("Start of Executing password data method");
+		
+		baseClassObj.getWebActions().clickElementUsingObjectXPath("//input[@id='id_sc_field_password']");
+		baseClassObj.getTgComProcess().UserPassword(testDataKey);
+		
+	}
+	
+	public void VerifyTGAppsHomePage(String testDataKey) {
+		logger.info("VerifyHomePage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().clickOnLoginButton();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			Thread.sleep(2000);
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error("Exception while executing VerifyHomePage - " + excp);
+			baseClassObj.setTestCaseStatus(false);
+		}
+	
+	}
+	public void VerifyQuickSearchTextBoxPage(String testDataKey) throws Exception {
+		logger.info("Start of Executing Quick search data method");
+		baseClassObj.getWebActions().clickElementUsingObjectXPath("(//input[@id='SC_fast_search_top'])");
+		baseClassObj.getTgComProcess().QuickSearchTextBox(testDataKey);
+	}
+	
+	public void VerifyQuickSearchSubmitPage(String testDataKey) {
+		logger.info("VerifyHomePage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().QuickSearchSubmitButton();
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			Thread.sleep(2000);
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error("Exception while executing VerifyHomePage - " + excp);
+			baseClassObj.setTestCaseStatus(false);
+		}
+	
+	}
+}

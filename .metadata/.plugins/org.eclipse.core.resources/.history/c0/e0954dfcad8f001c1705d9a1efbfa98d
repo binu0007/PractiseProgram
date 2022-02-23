@@ -1,0 +1,27 @@
+package TGApp;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class sendFileTesting {
+
+	public static void main(String[] args)
+	{
+
+		System.setProperty("webdriver.chrome.driver", "../Practise/src/main/resources/chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("https://www.truglobal.com/job/practice_head_service_now/");
+		driver.findElement(By.xpath("//button[text()='Apply now']")).click();
+		
+		driver.findElement(By.name("job_applicant_name")).sendKeys("Binu");
+	//	driver.findElement(By.id("file_attach-resume")).sendKeys("D:/binu.doc");
+
+
+	}
+
+}

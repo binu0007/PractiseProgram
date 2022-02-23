@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package MyRunner;
+
+import org.testng.annotations.Test;
+
+import io.cucumber.testng.CucumberOptions;
+
+/**
+ * @author TG1670
+ *
+ */
+
+@Test
+@CucumberOptions(features="..";
+glue= {"StepDefinitions"}
+		)
+public class Runner {
+
+}

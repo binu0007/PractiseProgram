@@ -1,0 +1,25 @@
+
+P
+java:S2925@"$Remove this use of "Thread.sleep()".(öÍËèHŸSRMAJORZ
+CODE_SMELL
+P
+java:S2925="$Remove this use of "Thread.sleep()".(öÍËèH SRMAJORZ
+CODE_SMELL
+P
+java:S2925R"$Remove this use of "Thread.sleep()".(¯ú™úH¡SRMAJORZ
+CODE_SMELL
+P
+java:S2925I"$Remove this use of "Thread.sleep()".(¯ú™úH¢SRMAJORZ
+CODE_SMELL
+P
+java:S29257"$Remove this use of "Thread.sleep()".(¯ú™úH£SRMAJORZ
+CODE_SMELL
+P
+java:S2925V"$Remove this use of "Thread.sleep()".(¬Æ„°H¤SRMAJORZ
+CODE_SMELL
+U
+java:S2925F"$Remove this use of "Thread.sleep()".(»ãßºøÿÿÿÿH¥SRMAJORZ
+CODE_SMELL
+U
+java:S2925C"$Remove this use of "Thread.sleep()".(»ãßºøÿÿÿÿH¦SRMAJORZ
+CODE_SMELL

@@ -1,0 +1,328 @@
+package com.truglobal.bean;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import com.truglobal.functions.CapabilityGenerator;
+import com.truglobal.testcases.General;
+import com.truglobal.testcases.TGWebCases;
+
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.proxy.CaptureType;
+
+/**
+ * @author Kumara Swamy
+ *
+ */
+public class DriverClass {
+	private static final Logger logger = LogManager.getLogger(DriverClass.class);
+
+	public WebDriver webDriver;
+	public BaseClass baseClassObj;
+	public String filename;
+
+	public DriverClass(BaseClass baseClassObj) {
+		this.baseClassObj = baseClassObj;
+	}
+
+	public void createDriver(String driverType) throws Exception {
+		// Creation of the main selenium web driver
+		filename = baseClassObj.getResultFileName().replace(".docx", "");
+
+		if (baseClassObj.getEnvironment() != null && baseClassObj.getEnvironment().equalsIgnoreCase("saucelabs")) {
+			CapabilityGenerator caps = new CapabilityGenerator(baseClassObj);
+			MutableCapabilities browserOptions = caps.getCapabilities();
+			if (browserOptions.getCapability("platformName").toString().equalsIgnoreCase("android")) {
+				browserOptions.setCapability("browserName", "Chrome");
+			} else if (browserOptions.getCapability("platformName").toString().equalsIgnoreCase("ios")) {
+				browserOptions.setCapability("browserName", "Safari");
+			}
+
+			URL gridUrl = new URL(
+					"https://oauth-kumara.t-e2efb:7bfb164a-bd2d-480d-9b48-1f626125b531@ondemand.eu-central-1.saucelabs.com:443/wd/hub");
+
+			webDriver = new RemoteWebDriver(gridUrl, browserOptions);
+		} else if (baseClassObj.getEnvironment() != null
+				&& baseClassObj.getEnvironment().equalsIgnoreCase("selenoid")) {
+			CapabilityGenerator caps = new CapabilityGenerator(baseClassObj);
+			MutableCapabilities tempCaps = caps.getCapabilities();
+			MutableCapabilities browserOptions = new MutableCapabilities();
+			browserOptions.setCapability("browserName", tempCaps.getCapability("browserName").toString().toLowerCase());
+			browserOptions.setCapability("version", tempCaps.getCapability("version").toString());
+			browserOptions.setCapability("acceptSSLCerts", true);
+			browserOptions.setCapability("acceptInsecureCerts", true);
+
+			MutableCapabilities mut = new MutableCapabilities();
+			mut.setCapability("enableVNC", true);
+			mut.setCapability("enableVideo", true);
+			mut.setCapability("videoName", filename + ".mp4");
+			mut.setCapability("enableLog", true);
+			mut.setCapability("logName", filename + ".log");
+			mut.setCapability("name", filename);
+			mut.setCapability("sessionTimeout", "4m");
+			mut.setCapability("acceptSSLCerts", true);
+
+			String[] list = { "VERBOSE=VERBOSE" };
+			mut.setCapability("env", list);
+
+			browserOptions.setCapability("selenoid:options", mut);
+			webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), browserOptions);
+		} else {
+			switch (driverType.toLowerCase().trim().replace(" ", "").replace("&", "and")) {
+			case "chrome":
+				createChrome();
+				break;
+
+			case "firefox":
+				createFirefox();
+				break;
+
+			case "edge":
+				createEdge();
+				break;
+
+			case "ie":
+				createIE();
+				break;
+
+			default:
+				webDriver = new ChromeDriver();
+				logger.info("Launched the Chrome Driver");
+				break;
+			}
+		}
+		webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+	}
+
+	private void createChrome() throws IOException {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notifications");
+		options.addArguments("--ignore-certificate-errors");
+		System.setProperty("webdriver.chrome.driver",
+				getCurrentDirectoryOfFramework() + "\\Driver\\bin\\Debug\\chromedriver.exe");
+		webDriver = new ChromeDriver(options);
+		logger.info("Launched the Chrome Driver");
+
+//		BrowserMobProxyServer server = new BrowserMobProxyServer();
+//		server.start();
+//		Proxy seleniumProxy = ClientUtil.createSeleniumProxy(server);
+//		String hostIp = Inet4Address.getLocalHost().getHostAddress();
+//		seleniumProxy.setHttpProxy(hostIp + ":" + server.getPort());
+//		seleniumProxy.setSslProxy(hostIp + ":" + server.getPort());
+//		server.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+//		System.setProperty("webdriver.chrome.driver",
+//				getCurrentDirectoryOfFramework() + "\\Driver\\bin\\Debug\\chromedriver.exe");
+//		System.setProperty("webdriver.chrome.whitelistedIps", "");
+//		DesiredCapabilities seleniumCapabilities = new DesiredCapabilities();
+//		seleniumCapabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
+//		seleniumCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+//		seleniumCapabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--disable-web-security");
+//		options.addArguments("--allow-insecure-localhost");
+//		options.addArguments("--ignore-urlfetcher-cert-requests");
+//		server.newHar("HarFile");
+//		baseClassObj.setServer(server);
+//		webDriver = new ChromeDriver(seleniumCapabilities);
+	}
+
+	private void createFirefox() throws UnknownHostException {
+		System.setProperty("webdriver.gecko.driver",
+				getCurrentDirectoryOfFramework() + "\\Driver\\bin\\Debug\\geckodriver.exe");
+		webDriver = new FirefoxDriver();
+		logger.info("Launched the Firefox Driver");
+
+	}
+
+	private void createIE() {
+		System.setProperty("webdriver.ie.driver",
+				getCurrentDirectoryOfFramework() + "\\Driver\\bin\\Debug\\IEDriverServer.exe");
+		webDriver = new InternetExplorerDriver();
+		logger.info("Launched the IE Driver");
+	}
+
+	private void createEdge() {
+		System.setProperty("webdriver.edge.driver",
+				getCurrentDirectoryOfFramework() + "\\Driver\\bin\\Debug\\msedgedriver.exe");
+		webDriver = new EdgeDriver();
+		logger.info("Launched the MS Edge Driver");
+	}
+
+	// This method is used to set the current driver
+	public void setDriver(WebDriver webDriver) {
+		this.webDriver = webDriver;
+	}
+
+	// This method is used to obtain the current driver
+	public WebDriver getDriver() {
+		return webDriver;
+	}
+
+	// This method launches a webpage using the URL on the browser
+	public void launchBrowser(String url) {
+		webDriver.navigate().to(url);
+		webDriver.manage().window().maximize();
+	}
+
+	// This method closes the current browser window all together, irrespective of
+	// multiple tabs
+	public void closeDriver() {
+		webDriver.close();
+	}
+
+	// This method closes the current active browser tab only
+	public void quitDriver() {
+		webDriver.quit();
+	}
+
+	public String getCurrentDirectoryOfFramework() {
+		logger.info("Start of GetCurrentDirectoryOfFramework");
+		Path currentRelativePath = Paths.get("");
+		return currentRelativePath.toAbsolutePath().toString();
+	}
+
+	// This method executes the pre-condition, the actual test case and the
+	// post-condition test cases
+	// if the method is not found, it will not be executed rather it will update log
+	public void executeTestCases(String[] methodNames, String[] methodDataNames) {
+		logger.info("ExecuteTestCases - Task Item execution starts here");
+
+		// This logic extracts all the General methods
+		Map<String, String> generalMethodsDictObj = new HashMap<>();
+		Method[] methods = General.class.getMethods();
+
+		for (int i = 0; i < methods.length; i++) {
+			generalMethodsDictObj.put(methods[i].getName().toLowerCase(), methods[i].getName());
+		}
+
+		// This logic extracts all the TG TestCases methods
+		Map<String, String> tgMethodsDictObj = new HashMap<>();
+		methods = TGWebCases.class.getMethods();
+		for (int i = 0; i < methods.length; i++) {
+			tgMethodsDictObj.put(methods[i].getName().toLowerCase(), methods[i].getName());
+		}
+
+		baseClassObj.setStartTimeValue(new Date());
+
+		int index = 0;
+		String multipleTestMethodsSeparator = baseClassObj.getComFuncs()
+				.getValuesFromDictionary(baseClassObj.getComFuncs().genPropRefDictObj, "MultipleTestMethodsSeparator");
+
+		// This logic will execute all the methods (Pre, actual, Post)
+		for (int i = 0; i < methodNames.length; i++) {
+			String indMethods = methodNames[i];
+			logger.info(
+					String.format("Current Method set for %s are %s", baseClassObj.getCurrentTestCase(), indMethods));
+
+			String[] splittedMethods = indMethods.split(multipleTestMethodsSeparator);
+
+			for (int j = 0; j < splittedMethods.length; j++) {
+				String indMethod = splittedMethods[j];
+				boolean methodCheckStatus = true;
+				boolean modifiedIndMethodStatus = true;
+
+				String modIndMethod;
+
+				String verifyAndUpdateGeneralMethodNames = baseClassObj.getComFuncs()
+						.getValuesFromDictionary(generalMethodsDictObj, indMethod.toLowerCase().trim());
+
+				if (!verifyAndUpdateGeneralMethodNames.contains("InvalidkeyString")) {
+					modIndMethod = verifyAndUpdateGeneralMethodNames;
+					modifiedIndMethodStatus = true;
+					logger.info(String.format("Method name from verifyAndUpdateGeneralMethodNames - %s", modIndMethod));
+				} else {
+					modIndMethod = indMethod.trim();
+					modifiedIndMethodStatus = false;
+					logger.info(String.format(
+							"Method name from verifyAndUpdateGeneralMethodNames - %s is Invalid or not found",
+							modIndMethod));
+				}
+
+				if (!modifiedIndMethodStatus) {
+					String verifyAndUpdateTGWebMethodNames = baseClassObj.getComFuncs()
+							.getValuesFromDictionary(tgMethodsDictObj, indMethod.toLowerCase().trim());
+
+					if (!verifyAndUpdateTGWebMethodNames.contains("InvalidkeyString")) {
+						modIndMethod = verifyAndUpdateTGWebMethodNames;
+						modifiedIndMethodStatus = true;
+						logger.info(
+								String.format("Method name from verifyAndUpdateTGWebMethodNames - %s", modIndMethod));
+					} else {
+						modIndMethod = indMethod.trim();
+						modifiedIndMethodStatus = false;
+						logger.info(
+								String.format("Method name from verifyAndUpdateTGWebMethodNames - %s", modIndMethod));
+					}
+				}
+
+				do {
+					Method method;
+					try {
+						method = General.class.getMethod(modIndMethod, String.class);
+						if (method != null) {
+							method.invoke(new General(baseClassObj), methodDataNames[index]);
+							methodCheckStatus = false;
+							index++;
+							break;
+						} else {
+							logger.info(String.format(
+									"%s method not found in General Class, hence not executed here, but may be from other class",
+									modIndMethod));
+							methodCheckStatus = false;
+						}
+					} catch (Exception excp) {
+						logger.info(String.format(
+								"%s method not found in General Class, hence not executed here, but may be from other class",
+								modIndMethod));
+						methodCheckStatus = false;
+					}
+					try {
+						method = TGWebCases.class.getMethod(modIndMethod, String.class);
+						if (method != null) {
+							method.invoke(new TGWebCases(baseClassObj), methodDataNames[index]);
+							methodCheckStatus = false;
+							index++;
+							break;
+						} else {
+							logger.info(String.format(
+									"%s method not found in TGWebCases Class, hence not executed here, but may be from other class",
+									modIndMethod));
+							methodCheckStatus = false;
+						}
+					} catch (Exception excp) {
+						logger.error(
+								String.format("Method not found in none of the classes - Exception is :- %s", excp));
+					}
+				} while (methodCheckStatus);
+			}
+		}
+		baseClassObj.setEndTimeValue(new Date());
+	}
+}

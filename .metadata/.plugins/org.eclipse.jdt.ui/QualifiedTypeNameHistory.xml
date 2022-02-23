@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.util.Assert"/>
+    <fullyQualifiedTypeName name="org.junit.Assert"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.JavascriptExecutor"/>
+    <fullyQualifiedTypeName name="org.junit.Before"/>
+    <fullyQualifiedTypeName name="org.junit.After"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.Dimension"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="com.galenframework.reports.model.LayoutReport"/>
+    <fullyQualifiedTypeName name="com.galenframework.api.Galen"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="com.galenframework.reports.GalenTestInfo"/>
+    <fullyQualifiedTypeName name="com.galenframework.reports.HtmlReportBuilder"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="org.testng.Assert"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.truglobal.functions.WebObjectActions"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.remote.DesiredCapabilities"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.remote.RemoteWebDriver"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="io.cucumber.java.en.Given"/>
+    <fullyQualifiedTypeName name="io.cucumber.java.en.When"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.WebDriver"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.chrome.ChromeDriver"/>
+    <fullyQualifiedTypeName name="org.testng.annotations.Test"/>
+    <fullyQualifiedTypeName name="io.cucumber.testng.CucumberOptions"/>
+    <fullyQualifiedTypeName name="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+    <fullyQualifiedTypeName name="io.cucumber.java.en.Then"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-02-22T16:17:40 IST" name="Default suite" finished-at="2022-02-22T16:18:28 IST" duration-ms="47815">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:MyRunner.Runner@7ec7ffd3]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2022-02-22T16:17:40 IST" name="Default test" finished-at="2022-02-22T16:18:28 IST" duration-ms="47815">
+      <class name="MyRunner.Runner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:MyRunner.Runner@7ec7ffd3]" started-at="2022-02-22T16:17:40 IST" name="setUpClass" finished-at="2022-02-22T16:17:40 IST" duration-ms="224" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@298d9a05]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:MyRunner.Runner@7ec7ffd3]" started-at="2022-02-22T16:17:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-02-22T16:17:50 IST" duration-ms="9336" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing Login Feature Of TGApp"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Working on TG App Testing working through BDD or Not]"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:MyRunner.Runner@7ec7ffd3]" started-at="2022-02-22T16:17:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-02-22T16:18:28 IST" duration-ms="38189" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing Home page of TG App after Login"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Working on TG App Testing working through BDD or Not]"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"*[name='dummy_working_date']"}
+  (Session info: chrome=98.0.4758.102)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TGL193', ip: '10.60.23.18', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\TG1670\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:60277}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: f277671d7c2f2cbca4631bf4246bda2f
+*** Element info: {Using=name, value=dummy_working_date}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"*[name='dummy_working_date']"}
+  (Session info: chrome=98.0.4758.102)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'TGL193', ip: '10.60.23.18', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.102 (273bf7ac8c90..., userDataDir: C:\Users\TG1670\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:60277}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: f277671d7c2f2cbca4631bf4246bda2f
+*** Element info: {Using=name, value=dummy_working_date}
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:404)
+at org.openqa.selenium.By$ByName.findElement(By.java:284)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at StepDefinitions.StepDefinitions.click_on_calender_toggle_button(StepDefinitions.java:126)
+at ✽.Click on Calender toggle button(file:///C:/Users/TG1670/OneDrive/Desktop/Framework/TGAppUsingBDD/../TGAppUsingBDD/src/test/java/Feature/Feature.feature:23)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:MyRunner.Runner@7ec7ffd3]" started-at="2022-02-22T16:18:28 IST" name="tearDownClass" finished-at="2022-02-22T16:18:28 IST" duration-ms="24" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- MyRunner.Runner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

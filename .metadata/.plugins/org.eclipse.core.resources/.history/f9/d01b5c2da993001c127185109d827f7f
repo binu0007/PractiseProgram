@@ -1,0 +1,490 @@
+package com.truglobal.testcases;
+
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.truglobal.bean.BaseClass;
+import com.truglobal.functions.WebObjectActions;
+
+/**
+ * @author Kumara Swamy
+ *
+ */
+public class TGWebCases {
+	private static final Logger logger = LogManager.getLogger(TGWebCases.class);
+	public BaseClass baseClassObj;
+
+	public TGWebCases(BaseClass baseClassObj) {
+		this.baseClassObj = baseClassObj;
+	}
+
+	// This test is used to navigate to Home tab and verify the pages
+	public void SearchAndAddProductToCart(String testDataKey) {
+		logger.info("Search Amazon Product - Test Case execution starts here");
+
+		try {
+			WebObjectActions webActions = baseClassObj.getWebActions();
+
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			String product = baseClassObj.getComFuncs()
+					.getValuesFromDictionary(baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey);
+			webActions.enterTextUsingObjectKeyAndTextKey("Amazon_Search_Input_bar", product);
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			webActions.clickElementUsingObjectXPath("(//div[@aria-label='" + product.toLowerCase() + "'])[1]");
+			Thread.sleep(5000);
+
+			String parentWindow = baseClassObj.getDriverClass().getDriver().getWindowHandle();
+			JavascriptExecutor js = (JavascriptExecutor) baseClassObj.getDriverClass().getDriver();
+			js.executeScript("arguments[0].scrollIntoView()", baseClassObj.getDriverClass().getDriver()
+					.findElement(By.xpath("//span[contains(text(),'" + product + "')]")));
+			Thread.sleep(5000);
+			try {
+				webActions.clickElementUsingObjectXPath("//span[contains(text(),'" + product + "')]");
+			} catch (Exception e) {
+				webActions.clickElementUsingJSEAndObjectXPath("//span[contains(text(),'" + product + "')]");
+			}
+			Thread.sleep(5000);
+			Set<String> allWindows = baseClassObj.getDriverClass().getDriver().getWindowHandles();
+			for (String eachHandle : allWindows) {
+				if (!eachHandle.equals(parentWindow)) {
+					baseClassObj.getDriverClass().getDriver().switchTo().window(eachHandle);
+				}
+			}
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			webActions.clickElementUsingObjectKey("Amazon_Add_To_Cart_button");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			Thread.sleep(10000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			webActions.clickElementUsingObjectKey("Amazon_Checkout_button");
+
+			webActions.clickElementUsingObjectKey("Amazon_Deliver_To_Address");
+
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error("Exception while executing Search Amazon Product - ", excp.getMessage());
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	public void addAddress(String testDataKey) throws Exception {
+		logger.info("addAddress - Test Case execution starts here");
+		try {
+			baseClassObj.getWebActions().performBasicMouseActionUsingObjectKey("AMZ_HelloSignIn", "movetoelement");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_YourAcc");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_YourAddress");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_VAlidateYourAdd");
+			String expText1 = "Sign-In";
+			String actText1 = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("AMZ_VAlidateYourAdd", "NO");
+			Thread.sleep(2000);
+//			Assert.assertEquals(expText1, actText1);
+			logger.info("we are in Sign In Page");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_EmailOrPhoneNum",
+					"kanuparthichandrasekharreddy7@gmail.com");
+
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_Continue");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_PSW", "9966051900");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_SignIn1");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_AddAddress");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_VerifyAddressPage");
+			String expAddPage = "Add a new address";
+			String actAddPage = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("AMZ_VerifyAddressPage",
+					"NO");
+			Thread.sleep(2000);
+//			Assert.assertEquals(expAddPage, actAddPage);
+			logger.info("we are in Add a new address Page");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_FullName", "Chandra Sekhar");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_10digitMobileNum", "9966051900");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_PINCode", "560025");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_Flat,CompanyAdd",
+					"5th Floor, Prestige Solitaire, TRUGlobal Software");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_Area", "Ashok Nagar");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_LandMark", "Brunton Cross Rd");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_SelectAddressType");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_DeliveryTime");
+
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_Submit");
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing addAddress Method - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+
+	}
+
+	public void VerifySignInPage(String testDataKey) {
+		logger.info("SignInPage - Test Case execution starts here");
+		try {
+
+			baseClassObj.getWebActions().performBasicMouseActionUsingObjectKey("AMZ_HelloSignIn", "movetoelement");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			boolean actSignOutText = baseClassObj.getWebActions()
+					.checkIfElementIsDisplayedUsingObjectKey("AMZ_SignOut");
+			if (!actSignOutText) {
+				Thread.sleep(1000);
+				baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_SignIn");
+				Thread.sleep(1000);
+				baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+				baseClassObj.getComFuncs().updateTestCaseStatus(true);
+				baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_EmailOrPhoneNum",
+						"kanuparthichandrasekharreddy7@gmail.com");
+				baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+				baseClassObj.getComFuncs().updateTestCaseStatus(true);
+				baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_Continue");
+				baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("AMZ_PSW", "9966051900");
+				baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+				baseClassObj.getComFuncs().updateTestCaseStatus(true);
+				Thread.sleep(1000);
+				baseClassObj.getWebActions().clickElementUsingObjectKey("AMZ_SignInButton");
+				Thread.sleep(2000);
+				baseClassObj.getWebActions().performBasicMouseActionUsingObjectKey("AMZ_HelloSignIn", "movetoelement");
+			}
+
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing SignInPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	public void VerifyServicesPage(String testDataKey) {
+		logger.info("VerifyServicesPage - Test Case execution starts here");
+
+		try {
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_CloudImplementation");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_VerifyCloudImplementation");
+			Thread.sleep(3000);
+			String expvalue = "CLOUD IMPLEMENTATION";
+			String actvalue = baseClassObj.getWebActions()
+					.getTextOfElementUsingObjectKey("TG_VerifyCloudImplementation", "NO");
+//			Assert.assertEquals(expvalue, actvalue);
+			logger.info(
+					"************************************we are in Cloud Implementation Page******************************************");
+			Thread.sleep(2000);
+			JavascriptExecutor jse = (JavascriptExecutor) baseClassObj.getDriverClass().webDriver;
+			for (int i = 0; i < 2; i++) {
+				jse.executeScript("window.scrollBy(0,500)");
+				Thread.sleep(3000);
+			}
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_DataAnalytics");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_DataAnalytics1");
+			Thread.sleep(3000);
+			String exp1 = "DATA ANALYTICS TESTING";
+			String act1 = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_DataAnalytics1", "NO");
+//			Assert.assertEquals(exp1, act1);
+			logger.info(
+					"********************************we are in Data Analytics and testing page********************************");
+			Thread.sleep(2000);
+			for (int i = 0; i < 3; i++) {
+				jse.executeScript("window.scrollBy(0,500)");
+				Thread.sleep(3000);
+			}
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			for (int i = 0; i < 3; i++) {
+				jse.executeScript("window.scrollBy(0,-500)");
+				Thread.sleep(3000);
+			}
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getTgComProcess().navigateToServicesTab();
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Enterprise_DevOps");
+			String expText = "ENTERPRISE DEVOPS";
+			String act = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_Enterprise_DevOps_Text", "NO");
+//			Assert.assertEquals(expText, act);
+			logger.info(
+					"***********************************we are in EnterpriseDevOps page**********************************");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			for (int i = 0; i < 2; i++) {
+				jse.executeScript("window.scrollBy(0,500)");
+				Thread.sleep(3000);
+			}
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyServicesPage - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	public void getInTouchLink(String testDataKey) {
+		logger.info("Start of Executing Get In Touch method");
+		try {
+			baseClassObj.getTgComProcess().clickOnHomeTab();
+			JavascriptExecutor jse = (JavascriptExecutor) baseClassObj.getDriverClass().webDriver;
+			jse.executeScript("window.scrollTo(0,2000)");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_WriteUs");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Lets'Talk");
+			String expText = "Let’s Talk";
+			String act = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_Lets'Talk", "NO");
+//			Assert.assertEquals(act, expText);
+			logger.info("******************we are  in Write us an enquiry******************");
+			Thread.sleep(2000);
+			/*
+			 * String name =
+			 * baseClassObj.getComFuncs().getValuesFromDictionary(baseClassObj.getComFuncs()
+			 * .testCaseDataMappingRefDictObj,testDataKey );
+			 * baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TG_Name",
+			 * name);
+			 */
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("TG_Name", "TRUGlobal");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Email");
+			baseClassObj.getWebActions().sendFileName("testuser@truglobal.com");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Ph");
+			baseClassObj.getWebActions().sendFileName("1234567890");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Sub");
+			baseClassObj.getWebActions().sendFileName("Welcome to TRUGlobal");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Msg");
+			baseClassObj.getWebActions().enterTextIntoActiveElement("Hi TRUGlobal");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_GetInTouchA");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			/*
+			 * baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Lets'Talk");
+			 * String expText1 = "Let’s Talk"; String act1 =
+			 * baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_Lets'Talk",
+			 * "NO");
+			 * 
+			 * Assert.assertEquals(expText1, act1);
+			 */
+			logger.info("we are in get in touch page-------------------------------------------------");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_ViewAllOpenings");
+			Thread.sleep(3000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_WorkWithUS");
+			String expText2 = "We gather passionate people to build the best team in the world to solve the most important problem";
+			String act2 = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_WorkWithUS", "NO");
+//			Assert.assertEquals(act2, expText2);
+			logger.info("******************we are  View All Openings******************");
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing Get in touch Tab - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+
+	}
+
+	public void JobReference(String testDataKey) throws Exception {
+		logger.info("Start of Executing PracticeHead method");
+		try {
+			baseClassObj.getTgComProcess().clickOnHomeTab();
+
+			JavascriptExecutor jse = (JavascriptExecutor) baseClassObj.getDriverClass().webDriver;
+			jse.executeScript("window.scrollTo(0,2300)");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Practice");
+			String expText1 = "Practice Head – ServiceNow";
+			String act1 = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_PractText", "NO");
+//			Assert.assertEquals(act1, expText1);
+			logger.info("******************we are  in practice ******************");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Pdf");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_ApplyNow");
+			String expText2 = "Position: Practice Head – ServiceNow";
+			String act2 = baseClassObj.getWebActions().getTextOfElementUsingObjectKey("TG_Ptxt", "NO");
+//			Assert.assertEquals(act2, expText2);
+			logger.info("******************we are  in Apply NOW Page ******************");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_FullName");
+			baseClassObj.getWebActions().sendFileName("Test User");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Mobile");
+			baseClassObj.getWebActions().sendFileName("123456789");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Mail");
+			baseClassObj.getWebActions().sendFileName("testuser@truglobal.com");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Comments");
+			baseClassObj.getWebActions().sendFileName("Hi TRUGlobal I'm an Automation bot");
+			baseClassObj.getDriverClass().webDriver.findElement(By.xpath("//*[@id=\"label-file_attach-resume\"]"))
+					.sendKeys(
+							"C:\\Users\\TG1698\\eclipse-workspace\\TGAutomationFramework_MultiProcess\\TGAutomationFramework\\TestResults\\TGWeb_2022-02-11 11_12_20.8140.pdf");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TG_Close");
+
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing PracticeHead - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+	public void VerifyDSRCreation(String testDataKey) {
+		logger.info("VerifyDSRCreation - Test Case execution starts here");
+
+		try {
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_HamburgerMenuObj");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_MyActivityLinkObj");
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_MyDSRLinkObj");
+			baseClassObj.getWebActions().switchToFrameUsingObjectKey("TGApp_MyDSRFrameObj");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddDSRButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getWebActions().switchToDefaultContent();
+			baseClassObj.getWebActions().switchToFrameUsingObjectKey("TGApp_CreateDSRFrameObj");
+
+			String dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "TSDate");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("TGApp_TSDateInputObj", dataRefLocal);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSDateStatusSelectObj");
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getWebActions().selectDropdownByIndexUsingObjectKey("TGApp_TSDateStatusSelectObj", 0);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_CreateDSRButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getWebActions().switchToDefaultContent();
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSCreateFailureOKButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_DSRTabCloseButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().switchToFrameUsingObjectKey("TGApp_MyDSRFrameObj");
+			String localObjRef = baseClassObj.getComFuncs()
+					.getValuesFromDictionary(baseClassObj.getComFuncs().objRefDictObj, "TGApp_DSRTableLinkObj");
+			baseClassObj.getWebActions().clickElementUsingObjectXPath("(" + localObjRef + ")[1]", 0);
+			Thread.sleep(3000);
+			baseClassObj.getWebActions().switchToDefaultContent();
+			baseClassObj.getWebActions().switchToFrameUsingObjectKey("TGApp_CreateDSRFrameObj");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AdditionalInfoButtonObj");
+
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "HomeHrs");
+			baseClassObj.getWebActions().clearTextUsingObjectKey("TGApp_HomeHrsInputObj");
+
+			logger.info("Home Hours from TCDM - " + dataRefLocal);
+
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_HomeHrsInputObj", dataRefLocal);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_WfhReasonButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().selectDropdownByIndexUsingObjectKey("TGApp_WRHReasonSelectObj", 1);
+			Thread.sleep(2000);
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "Participants");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_ParticipantsInputObj", dataRefLocal);
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "ClientName");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_ClientNameInputObj", dataRefLocal);
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "WfhDetails");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_WFHDetailsInputObj", dataRefLocal);
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_SubmitForApprovalButtonObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSCreateFailureOKButtonObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSSubmitErrorButtonObj");
+			Thread.sleep(4000);
+
+			baseClassObj.getComProcess().captureAndAppendPictureToResultFile();
+			baseClassObj.getWebActions().switchToFrameUsingObjectKey("TGApp_CreateDSRFrameObj2");
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSDetailsButtonObj");
+			Thread.sleep(2000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSLocationSelectArrowObj");
+			Thread.sleep(1000);
+
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_AddTSInputBoxObj", "Leave");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSLeaveListObj");
+			Thread.sleep(1000);
+
+			// baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_AddTSInputBoxObj",
+			// "Home"); Thread.sleep(1000);
+			// baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSHomeListObj");
+			// Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSTasksSelectArrowObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_AddTSInputBoxObj", "Leave");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSLeaveListObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSProjectSelectArrowObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndTextKey("TGApp_AddTSInputBoxObj", "Leave");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_AddTSLeaveListObj");
+			Thread.sleep(1000);
+
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "Time");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("TGApp_AddTSTimeInputObj", dataRefLocal,
+					0);
+			Thread.sleep(1000);
+			dataRefLocal = baseClassObj.getComFuncs().getValuesFromDictionary(
+					baseClassObj.getComFuncs().testCaseDataMappingRefDictObj, testDataKey + "Desc");
+			baseClassObj.getWebActions().enterTextUsingObjectKeyAndDirectText("TGApp_AddTSDescInputObj", dataRefLocal,
+					0);
+			Thread.sleep(1000);
+
+			baseClassObj.getWebActions().switchToParentFrame();
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_SubmitForApprovalButtonObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSCreateFailureOKButtonObj");
+			Thread.sleep(1000);
+			baseClassObj.getWebActions().clickElementUsingObjectKey("TGApp_TSSubmitErrorButtonObj");
+			Thread.sleep(1000);
+			Thread.sleep(1000);
+
+			baseClassObj.getComFuncs().updateTestCaseStatus(true);
+		} catch (Exception excp) {
+			logger.error(String.format("Exception while executing VerifyDSRCreation - %s", excp));
+			baseClassObj.setTestCaseStatus(false);
+		}
+	}
+
+}
